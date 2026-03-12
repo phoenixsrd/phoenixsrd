@@ -78,10 +78,6 @@ Aqui estão **todos** os projetos públicos que já desenvolvi no GitHub:
 
 - **GitHub**: [@phoenixsrd](https://github.com/phoenixsrd)
 
-- **Projetos em produção**:
-  - [autodowm](https://autodowm.vercel.app)
-  - [randomxplorers](https://randomxplorers.vercel.app)
-
 ⭐ Se algum projeto te ajudou, não esqueça de deixar uma estrela!
 
 Feito com ❤️
