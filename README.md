@@ -83,7 +83,7 @@ Aqui estão **todos** os projetos públicos que já desenvolvi no GitHub:
 
 ## 📊 Estatísticas do GitHub
 
-![Estatísticas](https://github-readme-stats.vercel.app/api?username=phoenixsrd&show_icons=true&theme=radical&locale=pt-br&hide=contribs)
+![Estatísticas](https://github-readme-stats.vercel.app/api?username=phoenixsrd&show_icons=true&theme=radical&locale=pt-br&)
 ![Linguagens](https://github-readme-stats.vercel.app/api/top-langs/?username=phoenixsrd&layout=compact&theme=radical&locale=pt-br)
 
 ## 📫 Onde me encontrar
