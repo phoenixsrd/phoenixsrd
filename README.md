@@ -17,6 +17,17 @@
 
 Aqui estão **todos** os projetos públicos que já desenvolvi no GitHub:
 
+### [pulsonews](https://github.com/phoenixsrd/pulsonews)
+**Agregador de notícias em tempo real — PULSO NEWS**
+> Notícias ao vivo com atualização automática a cada 5 minutos.
+
+- Botões **AO VIVO**, **ATUALIZAR** e **▶ URGENTE**
+- Auto-refresh + contagem regressiva
+- Interface limpa e focada em conteúdo fresco
+
+**Demo ao vivo**: [pulsonews.vercel.app](https://pulsonews.vercel.app)  
+**Linguagem principal**: HTML + JavaScript
+
 ### [yt-dlp-advanced](https://github.com/phoenixsrd/yt-dlp-advanced)
 **Downloader avançado de vídeos e áudios**
 > Projeto completo para baixar conteúdo de +1000 sites usando **yt-dlp**.
