@@ -24,7 +24,7 @@
 **Linguagem principal**: TypeScript
 
 ### [yt-dlp-advanced](https://github.com/phoenixsrd/yt-dlp-advanced)
-**Yt Dlp Advanced**  
+**Ytdlp Advanced**  
 > Downloader avançado usando yt-dlp para +1000 sites.
 
 **Linguagem principal**: Python
