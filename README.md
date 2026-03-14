@@ -17,14 +17,14 @@
 ## 🚀 Meus Projetos
 
 ### [cinemastreamm](https://github.com/phoenixsrd/cinemastreamm)
-**CinemaStreamm**  
+**Cinema Streamm**  
 > Plataforma de streaming e cinema.
 
 **Site ao vivo**: [cinemastreamm.vercel.app](https://cinemastreamm.vercel.app)  
 **Linguagem principal**: TypeScript
 
 ### [yt-dlp-advanced](https://github.com/phoenixsrd/yt-dlp-advanced)
-**yt-dlp-advanced**  
+**Yt Dlp Advanced**  
 > Downloader avançado usando yt-dlp para +1000 sites.
 
 **Linguagem principal**: Python
