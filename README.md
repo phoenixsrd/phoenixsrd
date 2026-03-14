@@ -20,6 +20,7 @@
 **CinemaStreamm**  
 > Plataforma de streaming e cinema.
 
+**Demo ao vivo**: [cinemastreamm.vercel.app](https://cinemastreamm.vercel.app)  
 **Linguagem principal**: TypeScript
 
 ### [yt-dlp-advanced](https://github.com/phoenixsrd/yt-dlp-advanced)
