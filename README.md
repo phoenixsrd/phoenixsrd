@@ -84,8 +84,8 @@
 
 ## 📫 Onde me encontrar
 
-- **GitHub**: [@phoenixsrd](https://github.com/phoenixsrd)
+**GitHub**: [@phoenixsrd](https://github.com/phoenixsrd)
 
-⭐ Deixa uma estrela se algum projeto te ajudou!
+**⭐ Deixa uma estrela se algum projeto te ajudou!**
 
-Feito com ❤️ 
+**Feito com ❤️**
