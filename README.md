@@ -20,7 +20,7 @@
 **CinemaStreamm**  
 > Plataforma de streaming e cinema.
 
-**Demo ao vivo**: [cinemastreamm.vercel.app](https://cinemastreamm.vercel.app)  
+**Site ao vivo**: [cinemastreamm.vercel.app](https://cinemastreamm.vercel.app)  
 **Linguagem principal**: TypeScript
 
 ### [yt-dlp-advanced](https://github.com/phoenixsrd/yt-dlp-advanced)
@@ -33,7 +33,7 @@
 **PULSO NEWS**  
 > Agregador de notícias em tempo real com atualização automática.
 
-**Demo ao vivo**: [pulsonews.vercel.app](https://pulsonews.vercel.app)  
+**Site ao vivo**: [pulsonews.vercel.app](https://pulsonews.vercel.app)  
 **Linguagem principal**: HTML + JavaScript
 
 ### [linktera](https://github.com/phoenixsrd/linktera)
@@ -43,7 +43,7 @@
 - Gera links diretos de reprodução  
 - Tema claro/escuro e PWA instalável
 
-**Demo ao vivo**: [linktera.vercel.app](https://linktera.vercel.app)  
+**Site ao vivo**: [linktera.vercel.app](https://linktera.vercel.app)  
 **Linguagem principal**: HTML + JavaScript
 
 ### [twitchmonitor](https://github.com/phoenixsrd/twitchmonitor)
@@ -62,7 +62,7 @@
 **Autodowm**  
 > Visualizador e downloader automático de releases do GitHub.
 
-**Demo ao vivo**: [autodowm.vercel.app](https://autodowm.vercel.app)  
+**Site ao vivo**: [autodowm.vercel.app](https://autodowm.vercel.app)  
 **Linguagem principal**: HTML + JavaScript
 
 ### [scripts](https://github.com/phoenixsrd/scripts)
@@ -75,7 +75,7 @@
 **RandomXplorers**  
 > Abre vídeos aleatórios com apenas um clique.
 
-**Demo ao vivo**: [randomxplorers.vercel.app](https://randomxplorers.vercel.app)  
+**Site ao vivo**: [randomxplorers.vercel.app](https://randomxplorers.vercel.app)  
 **Linguagem principal**: HTML + JavaScript
 
 ## 📊 Estatísticas do GitHub
