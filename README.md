@@ -1,64 +1,78 @@
 # 👋 Olá, eu sou phoenixsrd
 
-**Desenvolvedor focado em automação, Python, scripts e ferramentas úteis.**
+**Desenvolvedor focado em automação, Python, web tools, streaming e utilitários.**
 
 ## 🛠 Tecnologias & Ferramentas
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![Shell Script](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
 ![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)
 
-- **Principais interesses**: Automação · Downloaders · Monitoramento · Agregadores de Notícias · CLI Tools
-- **Ferramentas favoritas**: yt-dlp, Twitch API, GitHub API, Vercel, Termux
+- **Principais interesses**: Automação · Downloaders · Streaming · Agregadores · Utilitários
+- **Ferramentas favoritas**: yt-dlp, Terabox, Vercel, Termux
 
-## 🚀 Meus Projetos Públicos
+## 🚀 Meus Projetos
 
-### [pulsonews](https://github.com/phoenixsrd/pulsonews)
-**Agregador de notícias em tempo real — PULSO NEWS**  
-> Notícias ao vivo com atualização automática a cada 5 minutos.
+### [cinemastreamm](https://github.com/phoenixsrd/cinemastreamm)
+**CinemaStreamm**  
+> Plataforma de streaming e cinema.
 
-- Botões **AO VIVO**, **ATUALIZAR** e **▶ URGENTE**
-- Auto-refresh + contagem regressiva
-- Interface limpa e focada em conteúdo fresco
+**Linguagem principal**: TypeScript
+
+### [yt-dlp-advanced](https://github.com/phoenixsrd/yt-dlp-advanced)
+**yt-dlp-advanced**  
+> Downloader avançado usando yt-dlp para +1000 sites.
+
+**Linguagem principal**: Python
+
+### [pulsonnews](https://github.com/phoenixsrd/pulsonnews)
+**PULSO NEWS**  
+> Agregador de notícias em tempo real com atualização automática.
 
 **Demo ao vivo**: [pulsonews.vercel.app](https://pulsonews.vercel.app)  
 **Linguagem principal**: HTML + JavaScript
 
-### [yt-dlp-advanced](https://github.com/phoenixsrd/yt-dlp-advanced)
-**Downloader avançado de vídeos e áudios**  
-> Baixe de +1000 sites usando yt-dlp.
+### [linktera](https://github.com/phoenixsrd/linktera)
+**LinkTera**  
+> Processador moderno de links do Terabox.
 
-- Interface CLI + servidor web  
-- Playlists, múltiplos formatos, fila, proxy e atualização automática
+- Gera links diretos de reprodução  
+- Tema claro/escuro e PWA instalável
+
+**Demo ao vivo**: [linktera.vercel.app](https://linktera.vercel.app)  
+**Linguagem principal**: HTML + JavaScript
+
+### [twitchmonitor](https://github.com/phoenixsrd/twitchmonitor)
+**TwitchMonitor**  
+> Monitor automático de lives da Twitch usando API oficial.
 
 **Linguagem principal**: Python
 
-### [twitchmonitor](https://github.com/phoenixsrd/twitchmonitor)
-**Monitor de canais da Twitch**  
-> Verifica se um canal está ao vivo em intervalos regulares.
-
-- API oficial da Twitch + execução automática no boot
+### [importantes](https://github.com/phoenixsrd/importantes)
+**Importantes**  
+> Coleção de scripts Python úteis (deduplicação de arquivos, scanner de músicas, etc).
 
 **Linguagem principal**: Python
 
 ### [autodowm](https://github.com/phoenixsrd/autodowm)
-**Visualizador e downloader de releases do GitHub**  
-> Puxa releases automaticamente de qualquer repo público.
+**Autodowm**  
+> Visualizador e downloader automático de releases do GitHub.
 
 **Demo ao vivo**: [autodowm.vercel.app](https://autodowm.vercel.app)  
 **Linguagem principal**: HTML + JavaScript
 
 ### [scripts](https://github.com/phoenixsrd/scripts)
-**Coleção de scripts de automação**  
-> Instaladores automáticos do yt-dlp + ferramentas diversas.
+**Scripts**  
+> Coleção de scripts de automação e instaladores (yt-dlp, ferramentas diversas).
 
-**Linguagem principal**: Shell Script + PowerShell
+**Linguagem principal**: Shell Script
 
 ### [randomxplorers](https://github.com/phoenixsrd/randomxplorers)
-**RandomXplorers – Vídeos aleatórios**  
-> Um clique e você cai em um vídeo surpresa.
+**RandomXplorers**  
+> Abre vídeos aleatórios com apenas um clique.
 
 **Demo ao vivo**: [randomxplorers.vercel.app](https://randomxplorers.vercel.app)  
 **Linguagem principal**: HTML + JavaScript
@@ -72,6 +86,6 @@
 
 - **GitHub**: [@phoenixsrd](https://github.com/phoenixsrd)
 
-⭐ Se algum projeto te ajudou, deixa uma estrela!
+⭐ Deixa uma estrela se algum projeto te ajudou!
 
-Feito com ❤️
+Feito com ❤️ 
