@@ -48,16 +48,6 @@
 **Site ao vivo**: [pulsonews.vercel.app](https://pulsonews.vercel.app)  
 **Linguagem principal**: HTML + JavaScript
 
-### [linktera](https://github.com/phoenixsrd/linktera)
-**LinkTera**  
-> Processador moderno de links do Terabox.
-
-- Gera links diretos de reprodução  
-- Tema claro/escuro e PWA instalável
-
-**Site ao vivo**: [linktera.vercel.app](https://linktera.vercel.app)  
-**Linguagem principal**: HTML + JavaScript
-
 ### [twitchmonitor](https://github.com/phoenixsrd/twitchmonitor)
 **TwitchMonitor**  
 > Monitor automático de lives da Twitch usando API oficial.
