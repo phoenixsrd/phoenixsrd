@@ -16,6 +16,18 @@
 
 ## 🚀 Meus Projetos
 
+### [photoexpress](https://github.com/phoenixsrd/photoexpress)
+**PhotoExpress**  
+> Hospedagem rápida de imagens com link direto para compartilhamento. Suba uma imagem e receba na hora um link público ou privado para compartilhar onde quiser.
+
+- Upload por clique ou arrastar e soltar  
+- Link direto + código HTML para incorporar  
+- Opção de link privado (não listado)  
+- Deploy serverless com Netlify + Neon (PostgreSQL)
+
+**Site ao vivo**: [photosexpress.netlify.app](https://photosexpress.netlify.app)  
+**Linguagem principal**: HTML + JavaScript
+
 ### [cinemastreamm](https://github.com/phoenixsrd/cinemastreamm)
 **Cinema Streamm**  
 > Plataforma de streaming e cinema.
