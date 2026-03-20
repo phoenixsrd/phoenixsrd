@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>phoenixsrd — Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#08080e; --surface:#0f0f1a; --surface2:#161625;
+    --border:rgba(255,107,53,.15); --fire:#ff6b35; --amber:#ffaa00;
+    --ember:#ff3d1a; --text:#e8e8f2; --muted:#6e6e8a; --card-bg:rgba(22,22,37,.85);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+  #bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.3}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+  header{min-height:100vh;display:flex;align-items:center;position:relative}
+  .hero-inner{padding:80px 0 60px}
+  .hero-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--fire);background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.25);padding:4px 14px;border-radius:4px;margin-bottom:28px;letter-spacing:.08em;opacity:0;animation:fadeUp .6s .2s forwards}
+  h1{font-family:'Oxanium',sans-serif;font-size:clamp(52px,9vw,96px);font-weight:800;line-height:1;letter-spacing:-.02em;opacity:0;animation:fadeUp .6s .4s forwards}
+  .name-fire{background:linear-gradient(135deg,var(--amber),var(--fire),var(--ember));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+  .hero-bio{margin-top:24px;font-size:18px;color:var(--muted);max-width:560px;min-height:28px;opacity:0;animation:fadeUp .6s .6s forwards}
+  .hero-bio strong{color:var(--text);font-weight:600}
+  .hero-meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:20px;opacity:0;animation:fadeUp .6s .7s forwards}
+  .meta-item{display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted)}
+  .meta-item strong{color:var(--text);font-size:15px}
+  .hero-actions{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fadeUp .6s .85s forwards}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:6px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;text-decoration:none;transition:all .25s;cursor:pointer;border:none}
+  .btn-primary{background:linear-gradient(135deg,var(--fire),var(--ember));color:#fff;box-shadow:0 0 32px rgba(255,107,53,.3)}
+  .btn-primary:hover{box-shadow:0 0 48px rgba(255,107,53,.5);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+  .btn-ghost:hover{border-color:var(--fire);color:var(--fire);background:rgba(255,107,53,.05)}
+  .scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;opacity:0;animation:fadeIn 1s 1.5s forwards}
+  .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,transparent,var(--fire));animation:scrollPulse 2s infinite}
+
+  section{padding:90px 0;position:relative;z-index:1;border-top:1px solid var(--border)}
+  .section-label{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--fire);letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:12px}
+  .section-label::before{content:'';display:block;width:32px;height:1px;background:var(--fire)}
+  .section-title{font-family:'Oxanium',sans-serif;font-size:clamp(26px,4vw,40px);font-weight:700;line-height:1.15;margin-bottom:44px}
+
+  .tech-grid{display:flex;flex-wrap:wrap;gap:10px}
+  .tech-pill{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:40px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text);transition:all .22s}
+  .tech-pill:hover{border-color:var(--fire);color:var(--fire);background:rgba(255,107,53,.06);transform:translateY(-2px)}
+  .tech-pill .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+  .interests-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .interest-tag{padding:5px 14px;border-radius:4px;background:rgba(255,170,0,.07);border:1px solid rgba(255,170,0,.2);color:var(--amber);font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.04em}
+
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
+  .project-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:26px;position:relative;overflow:hidden;transition:all .3s;backdrop-filter:blur(12px);display:flex;flex-direction:column}
+  .project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--fire),transparent);opacity:0;transition:opacity .3s}
+  .project-card:hover{border-color:rgba(255,107,53,.35);transform:translateY(-4px);box-shadow:0 24px 48px rgba(0,0,0,.4)}
+  .project-card:hover::before{opacity:1}
+  .project-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+  .project-icon{font-size:20px;width:44px;height:44px;border-radius:10px;background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .project-links{display:flex;gap:6px}
+  .project-link{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;border:1px solid var(--border);color:var(--muted);text-decoration:none;transition:all .2s;font-size:14px}
+  .project-link:hover{border-color:var(--fire);color:var(--fire);background:rgba(255,107,53,.06)}
+  .project-name{font-family:'Oxanium',sans-serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px;text-decoration:none;display:block;transition:color .2s}
+  .project-name:hover{color:var(--fire)}
+  .project-desc{font-size:13.5px;color:var(--muted);line-height:1.6;flex:1;margin-bottom:18px}
+  .project-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:14px;border-top:1px solid var(--border);margin-top:auto}
+  .lang-badge{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
+  .lang-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+  .meta-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--muted)}
+  .live-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-family:'JetBrains Mono',monospace;color:#4ade80;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);padding:2px 10px;border-radius:20px}
+  .live-dot{width:5px;height:5px;border-radius:50%;background:#4ade80;animation:blink 1.5s infinite}
+
+  .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+  .stat-card{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:28px 20px;text-align:center;transition:all .25s}
+  .stat-card:hover{border-color:rgba(255,107,53,.35);transform:translateY(-3px)}
+  .stat-value{font-family:'Oxanium',sans-serif;font-size:38px;font-weight:800;background:linear-gradient(135deg,var(--amber),var(--fire));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+  .stat-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-top:8px;letter-spacing:.08em;text-transform:uppercase}
+
+  .skeleton{background:linear-gradient(90deg,var(--surface2) 25%,rgba(255,107,53,.05) 50%,var(--surface2) 75%);background-size:400% 100%;animation:shimmer 1.5s infinite;border-radius:8px}
+  @keyframes shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
+
+  footer{border-top:1px solid var(--border);padding:44px 0;position:relative;z-index:1}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+  .footer-brand{font-family:'Oxanium',sans-serif;font-size:22px;font-weight:700;background:linear-gradient(135deg,var(--amber),var(--fire));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .footer-credit{font-size:13px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+  .footer-credit a{color:var(--fire);text-decoration:none}
+
+  .error-msg{color:#f87171;font-family:'JetBrains Mono',monospace;font-size:13px;padding:16px;background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.2);border-radius:8px}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:1}}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s,transform .55s}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  ::-webkit-scrollbar{width:5px}
+  ::-webkit-scrollbar-track{background:var(--bg)}
+  ::-webkit-scrollbar-thumb{background:rgba(255,107,53,.3);border-radius:4px}
+  @media(max-width:600px){.projects-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<header>
+  <div class="container">
+    <div class="hero-inner">
+      <h1>
+        <span style="color:var(--text)">Olá, eu sou</span>
+        <span class="name-fire" id="hero-name">phoenixsrd</span>
+      </h1>
+      <p class="hero-bio" id="hero-bio">
+        <span class="skeleton" style="display:inline-block;width:340px;height:22px;border-radius:4px;"></span>
+      </p>
+      <div class="hero-meta" id="hero-meta"></div>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8l4 4-4 4"/></svg>
+          Ver projetos
+        </a>
+        <a href="https://github.com/phoenixsrd" target="_blank" class="btn btn-ghost">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>scroll</span><div class="scroll-line"></div></div>
+</header>
+
+<section id="stack">
+  <div class="container">
+    <div class="section-label reveal">tecnologias</div>
+    <h2 class="section-title reveal">Ferramentas & Stack</h2>
+    <div class="tech-grid">
+      <div class="tech-pill"><span class="dot" style="background:#e34f26"></span>HTML5</div>
+      <div class="tech-pill"><span class="dot" style="background:#f7df1e"></span>JavaScript</div>
+      <div class="tech-pill"><span class="dot" style="background:#3776ab"></span>Python</div>
+      <div class="tech-pill"><span class="dot" style="background:#4eaa25"></span>Shell Script</div>
+      <div class="tech-pill"><span class="dot" style="background:#3178c6"></span>TypeScript</div>
+      <div class="tech-pill"><span class="dot" style="background:#5391fe"></span>PowerShell</div>
+      <div class="tech-pill"><span class="dot" style="background:#00c7b7"></span>Netlify</div>
+      <div class="tech-pill"><span class="dot" style="background:#aaa"></span>Vercel</div>
+      <div class="tech-pill"><span class="dot" style="background:#336791"></span>PostgreSQL / Neon</div>
+      <div class="tech-pill"><span class="dot" style="background:#ff6b35"></span>yt-dlp</div>
+      <div class="tech-pill"><span class="dot" style="background:#9146ff"></span>Twitch API</div>
+      <div class="tech-pill"><span class="dot" style="background:#ffaa00"></span>Termux</div>
+    </div>
+    <div class="interests-row reveal">
+      <span class="interest-tag"># automação</span>
+      <span class="interest-tag"># downloaders</span>
+      <span class="interest-tag"># streaming</span>
+      <span class="interest-tag"># agregadores</span>
+      <span class="interest-tag"># utilitários</span>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-label reveal">repositórios</div>
+    <h2 class="section-title reveal">Projetos <span id="repo-count" style="font-size:16px;color:var(--muted);font-family:'JetBrains Mono',monospace;font-weight:400;"></span></h2>
+    <div id="projects-grid" class="projects-grid">
+      <div class="project-card skeleton" style="height:200px;"></div>
+      <div class="project-card skeleton" style="height:200px;"></div>
+      <div class="project-card skeleton" style="height:200px;"></div>
+      <div class="project-card skeleton" style="height:200px;"></div>
+      <div class="project-card skeleton" style="height:200px;"></div>
+      <div class="project-card skeleton" style="height:200px;"></div>
+    </div>
+  </div>
+</section>
+
+<section id="stats">
+  <div class="container">
+    <div class="section-label reveal">métricas</div>
+    <h2 class="section-title reveal">Estatísticas GitHub</h2>
+    <div id="stats-grid" class="stats-grid">
+      <div class="stat-card skeleton" style="height:100px;"></div>
+      <div class="stat-card skeleton" style="height:100px;"></div>
+      <div class="stat-card skeleton" style="height:100px;"></div>
+      <div class="stat-card skeleton" style="height:100px;"></div>
+      <div class="stat-card skeleton" style="height:100px;"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand" id="footer-name">phoenixsrd</div>
+      <div class="footer-credit">
+        Feito com ❤️ &nbsp;·&nbsp;
+        <a href="https://github.com/phoenixsrd" target="_blank">@phoenixsrd</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const GITHUB_USER = 'phoenixsrd';
+
+const EXCLUDE = new Set([GITHUB_USER]);
+
+const ICON_MAP = [
+  ['photo','🖼️'],['cinema','🎬'],['stream','🎬'],['yt','⬇️'],
+  ['pulso','📰'],['news','📰'],['twitch','🟣'],['monitor','👁️'],
+  ['random','🎲'],['script','⚙️'],['dow','📦'],['link','🔗'],
+  ['multi','📺'],['nmap','🔍'],['import','📥']
+];
+
+const LANG_COLOR = {
+  JavaScript:'#f7df1e',TypeScript:'#3178c6',Python:'#3776ab',
+  HTML:'#e34f26',Shell:'#4eaa25',PowerShell:'#5391fe',
+  CSS:'#563d7c',PHP:'#8892be',Ruby:'#cc342d',Go:'#00add8',
+  Rust:'#dea584',Java:'#b07219','C#':'#178600','C++':'#f34b7d'
+};
+
+(()=>{
+  const c=document.getElementById('bg-canvas'),ctx=c.getContext('2d');
+  let W,H,pts=[];
+  const resize=()=>{W=c.width=innerWidth;H=c.height=innerHeight};
+  resize(); addEventListener('resize',resize);
+  const mk=()=>({x:Math.random()*W,y:H+10,vx:(Math.random()-.5)*.4,vy:-(Math.random()*1.1+.35),life:0,max:Math.random()*130+80,sz:Math.random()*2+.5});
+  for(let i=0;i<100;i++){const p=mk();p.y=Math.random()*H;p.life=Math.random()*p.max;pts.push(p)}
+  (function loop(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;p.life++;
+      if(p.life>=p.max)Object.assign(p,mk());
+      const t=p.life/p.max,a=Math.sin(t*Math.PI)*.5;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.sz,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,${Math.round(107+80*t)},${Math.round(53*(1-t))},${a})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(loop);
+  })();
+})();
+
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal,.tech-pill').forEach(el=>obs.observe(el));
+
+const getIcon=name=>{
+  const n=name.toLowerCase();
+  for(const[k,v]of ICON_MAP)if(n.includes(k))return v;
+  return '📁';
+};
+
+const GH_SVG=`<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>`;
+const LK_SVG=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+const ST_SVG=`<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
+const FK_SVG=`<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="12" cy="6" r="3"/><path d="M6 15v-1c0-1.7 1.3-3 3-3h6c1.7 0 3-1.3 3-3V9"/><line x1="6" y1="15" x2="6" y2="9"/></svg>`;
+
+async function ghFetch(path){
+  const r=await fetch(`https://api.github.com/${path}`);
+  if(!r.ok)throw new Error(`${r.status} ${r.statusText}`);
+  return r.json();
+}
+
+async function loadProfile(){
+  try{
+    const u=await ghFetch(`users/${GITHUB_USER}`);
+    document.getElementById('hero-name').textContent=u.login;
+    document.getElementById('footer-name').textContent=u.login;
+    const bio=document.getElementById('hero-bio');
+    bio.innerHTML=u.bio||'<strong>Desenvolvedor</strong> focado em automação, Python, web tools, streaming e utilitários.';
+    document.getElementById('hero-meta').innerHTML=`
+      <div class="meta-item">${GH_SVG} <strong>${u.public_repos}</strong> repos públicos</div>
+      <div class="meta-item">${ST_SVG} <strong>${u.followers}</strong> seguidores</div>
+      ${u.location?`<div class="meta-item">📍 ${u.location}</div>`:''}
+    `;
+    document.querySelector('a[href="https://github.com/phoenixsrd"]').href=u.html_url;
+  }catch(e){console.warn('Profile error:',e)}
+}
+
+async function loadRepos(){
+  try{
+    let page=1,all=[];
+    while(true){
+      const batch=await ghFetch(`users/${GITHUB_USER}/repos?per_page=100&page=${page}&sort=updated`);
+      all=all.concat(batch);
+      if(batch.length<100)break;
+      page++;
+    }
+
+    const repos=all
+      .filter(r=>!EXCLUDE.has(r.name)&&!r.fork)
+      .sort((a,b)=>{
+        const ah=a.homepage?1:0,bh=b.homepage?1:0;
+        if(ah!==bh)return bh-ah;
+        if(b.stargazers_count!==a.stargazers_count)return b.stargazers_count-a.stargazers_count;
+        return new Date(b.updated_at)-new Date(a.updated_at);
+      });
+
+    document.getElementById('repo-count').textContent=`(${repos.length})`;
+    renderCards(repos);
+    renderStats(all);
+  }catch(e){
+    document.getElementById('projects-grid').innerHTML=
+      `<div class="error-msg">Erro ao carregar repositórios via GitHub API: ${e.message}</div>`;
+    document.getElementById('stats-grid').innerHTML='';
+  }
+}
+
+function renderCards(repos){
+  const grid=document.getElementById('projects-grid');
+  if(!repos.length){grid.innerHTML='<p style="color:var(--muted);font-family:JetBrains Mono,monospace;">Nenhum repositório encontrado.</p>';return}
+  grid.innerHTML='';
+
+  repos.forEach((r,i)=>{
+    const live=r.homepage&&r.homepage.trim()!=='';
+    const lc=LANG_COLOR[r.language]||'#888';
+    const card=document.createElement('div');
+    card.className='project-card reveal';
+
+    card.innerHTML=`
+      <div class="project-header">
+        <div class="project-icon">${getIcon(r.name)}</div>
+        <div class="project-links">
+          ${live?`<a href="${r.homepage}" target="_blank" rel="noopener" class="project-link" title="Site ao vivo">${LK_SVG}</a>`:''}
+          <a href="${r.html_url}" target="_blank" rel="noopener" class="project-link" title="GitHub">${GH_SVG}</a>
+        </div>
+      </div>
+      <a href="${r.html_url}" target="_blank" rel="noopener" class="project-name">${r.name}</a>
+      <p class="project-desc">${r.description||'Sem descrição.'}</p>
+      <div class="project-footer">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          ${r.language?`<span class="lang-badge"><span class="lang-dot" style="background:${lc}"></span>${r.language}</span>`:''}
+          <span class="meta-badge">${ST_SVG} ${r.stargazers_count}</span>
+          <span class="meta-badge">${FK_SVG} ${r.forks_count}</span>
+        </div>
+        ${live?`<span class="live-badge"><span class="live-dot"></span>live</span>`:''}
+      </div>
+    `;
+
+    grid.appendChild(card);
+    obs.observe(card);
+  });
+}
+
+function renderStats(all){
+  const own=all.filter(r=>!r.fork);
+  const stars=own.reduce((s,r)=>s+r.stargazers_count,0);
+  const forks=own.reduce((s,r)=>s+r.forks_count,0);
+  const deploys=own.filter(r=>r.homepage&&r.homepage.trim()).length;
+  const langs=new Set(own.map(r=>r.language).filter(Boolean)).size;
+
+  const grid=document.getElementById('stats-grid');
+  const items=[
+    [own.length,'Repositórios'],
+    [stars,'Stars totais'],
+    [deploys,'Com deploy'],
+    [langs,'Linguagens'],
+    [forks,'Forks totais']
+  ];
+
+  grid.innerHTML=items.map(([v,l])=>`
+    <div class="stat-card reveal">
+      <div class="stat-value">${v}</div>
+      <div class="stat-label">${l}</div>
+    </div>
+  `).join('');
+
+  grid.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+loadProfile();
+loadRepos();
+</script>
+</body>
+</html>
