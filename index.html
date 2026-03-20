@@ -323,7 +323,7 @@ function renderCards(repos){
         </div>
       </div>
       <a href="${r.html_url}" target="_blank" rel="noopener" class="project-name">${r.name}</a>
-      <p class="project-desc">${r.description||'Sem descrição.'}</p>
+      <p class="project-desc">${r.description||'A descrição de cada projeto encontra-se no repositório. Clique no ícone do GitHub para visualizá-lo.'}</p>
       <div class="project-footer">
         <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
           ${r.language?`<span class="lang-badge"><span class="lang-dot" style="background:${lc}"></span>${r.language}</span>`:''}
