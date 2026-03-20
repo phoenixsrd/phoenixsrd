@@ -73,13 +73,6 @@
 
 **Linguagem principal**: Shell Script
 
-### [randomxplorers](https://github.com/phoenixsrd/randomxplorers)
-**RandomXplorers**  
-> Abre vídeos aleatórios com apenas um clique.
-
-**Site ao vivo**: [randomxplorers.vercel.app](https://randomxplorers.vercel.app)  
-**Linguagem principal**: HTML + JavaScript
-
 ## 📊 Estatísticas do GitHub
 
 ![Estatísticas](https://github-readme-stats.vercel.app/api?username=phoenixsrd&show_icons=true&theme=radical&locale=pt-br)
