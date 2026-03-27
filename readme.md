@@ -3,7 +3,7 @@
 **Desenvolvedor focado em automação, Python, web tools, streaming e utilitários.**
 
 <div align="center">
-  <a href="https://phoenixsrd.github.io/phoenixsrd/">
+  <a href="https://phoenixsrd.github.io">
     <img src="https://img.shields.io/badge/🌐_ACESSE_MEU_PORTFÓLIO-000000?style=for-the-badge&logo=vercel&logoColor=black" height="60">
   </a>
 </div>
@@ -13,7 +13,7 @@
 ## 🛠 Tecnologias que uso
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=black)
-![Shell Script](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=black)
+![Shell Script](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge& de logo=gnu-bash&logoColor=black)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=black)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=black)
