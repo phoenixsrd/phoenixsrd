@@ -19,11 +19,6 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=black)
 ![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=black)
 
-## 📊 Estatísticas do GitHub
-
-![Estatísticas Gerais](https://github-readme-stats444.vercel.app/api?username=phoenixsrd&show_icons=true&theme=radical&locale=pt-br)
-![Linguagens Mais Usadas](https://github-readme-stats444.vercel.app/api/top-langs/?username=phoenixsrd&layout=compact&theme=radical&locale=pt-br)
-
 **⭐ Se curtiu, deixa uma estrela no repositório!**
 
 **Feito com ❤️**
