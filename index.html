@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Portfólio de phoenixsrd — projetos de automação, Python, web tools e streaming.">
 <title>phoenixsrd — Portfólio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,21 +21,21 @@
 
   header{min-height:100vh;display:flex;align-items:center;position:relative}
   .hero-inner{padding:80px 0 60px}
-  .hero-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--fire);background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.25);padding:4px 14px;border-radius:4px;margin-bottom:28px;letter-spacing:.08em}
-  h1{font-family:'Oxanium',sans-serif;font-size:clamp(52px,9vw,96px);font-weight:800;line-height:1;letter-spacing:-.02em}
+  .hero-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--fire);background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.25);padding:4px 14px;border-radius:4px;margin-bottom:28px;letter-spacing:.08em;opacity:0;animation:fadeUp .6s .2s forwards}
+  h1{font-family:'Oxanium',sans-serif;font-size:clamp(52px,9vw,96px);font-weight:800;line-height:1;letter-spacing:-.02em;opacity:0;animation:fadeUp .6s .4s forwards}
   .name-fire{background:linear-gradient(135deg,var(--amber),var(--fire),var(--ember));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
-  .hero-bio{margin-top:24px;font-size:18px;color:var(--muted);max-width:560px;min-height:28px}
+  .hero-bio{margin-top:24px;font-size:18px;color:var(--muted);max-width:560px;min-height:28px;opacity:0;animation:fadeUp .6s .6s forwards}
   .hero-bio strong{color:var(--text);font-weight:600}
-  .hero-meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:20px}
+  .hero-meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:20px;opacity:0;animation:fadeUp .6s .7s forwards}
   .meta-item{display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted)}
   .meta-item strong{color:var(--text);font-size:15px}
-  .hero-actions{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+  .hero-actions{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fadeUp .6s .85s forwards}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:6px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:15px;text-decoration:none;transition:all .25s;cursor:pointer;border:none}
   .btn-primary{background:linear-gradient(135deg,var(--fire),var(--ember));color:#fff;box-shadow:0 0 32px rgba(255,107,53,.3)}
   .btn-primary:hover{box-shadow:0 0 48px rgba(255,107,53,.5);transform:translateY(-2px)}
   .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
   .btn-ghost:hover{border-color:var(--fire);color:var(--fire);background:rgba(255,107,53,.05)}
-  .scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.1em}
+  .scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;opacity:0;animation:fadeIn 1s 1.5s forwards}
   .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,transparent,var(--fire));animation:scrollPulse 2s infinite}
 
   section{padding:90px 0;position:relative;z-index:1;border-top:1px solid var(--border)}
@@ -102,7 +101,7 @@
 </head>
 <body>
 
-<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<canvas id="bg-canvas"></canvas>
 
 <header>
   <div class="container">
@@ -112,7 +111,7 @@
         <span class="name-fire" id="hero-name">phoenixsrd</span>
       </h1>
       <p class="hero-bio" id="hero-bio">
-        <strong>Desenvolvedor</strong> focado em automação, Python, web tools, streaming e utilitários.
+        <span class="skeleton" style="display:inline-block;width:340px;height:22px;border-radius:4px;"></span>
       </p>
       <div class="hero-meta" id="hero-meta"></div>
       <div class="hero-actions">
@@ -199,19 +198,6 @@
   </div>
 </footer>
 
-<noscript>
-  <style>
-    .hero-tag,.hero-bio,.hero-meta,.hero-actions,.scroll-hint{opacity:1!important;animation:none!important}
-    #projects-grid .skeleton,#stats-grid .skeleton{display:none}
-  </style>
-  <div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:99;background:var(--bg)">
-    <p style="color:var(--muted);font-family:'JetBrains Mono',monospace;text-align:center;padding:20px">
-      Este portfólio requer JavaScript para carregar projetos e estatísticas do GitHub.<br>
-      Visite diretamente: <a href="https://github.com/phoenixsrd" style="color:var(--fire)">github.com/phoenixsrd</a>
-    </p>
-  </div>
-</noscript>
-
 <script>
 const GITHUB_USER = 'phoenixsrd';
 
@@ -237,7 +223,7 @@ const LANG_COLOR = {
   const resize=()=>{W=c.width=innerWidth;H=c.height=innerHeight};
   resize(); addEventListener('resize',resize);
   const mk=()=>({x:Math.random()*W,y:H+10,vx:(Math.random()-.5)*.4,vy:-(Math.random()*1.1+.35),life:0,max:Math.random()*130+80,sz:Math.random()*2+.5});
-  for(let i=0;i<50;i++){const p=mk();p.y=Math.random()*H;p.life=Math.random()*p.max;pts.push(p)}
+  for(let i=0;i<100;i++){const p=mk();p.y=Math.random()*H;p.life=Math.random()*p.max;pts.push(p)}
   (function loop(){
     ctx.clearRect(0,0,W,H);
     pts.forEach(p=>{
@@ -332,8 +318,8 @@ function renderCards(repos){
       <div class="project-header">
         <div class="project-icon">${getIcon(r.name)}</div>
         <div class="project-links">
-          ${live?`<a href="${r.homepage}" target="_blank" rel="noopener" class="project-link" title="Site ao vivo" aria-label="Ver site ao vivo de ${r.name}">${LK_SVG}</a>`:''}
-          <a href="${r.html_url}" target="_blank" rel="noopener" class="project-link" title="GitHub" aria-label="Ver repositório ${r.name} no GitHub">${GH_SVG}</a>
+          ${live?`<a href="${r.homepage}" target="_blank" rel="noopener" class="project-link" title="Site ao vivo">${LK_SVG}</a>`:''}
+          <a href="${r.html_url}" target="_blank" rel="noopener" class="project-link" title="GitHub">${GH_SVG}</a>
         </div>
       </div>
       <a href="${r.html_url}" target="_blank" rel="noopener" class="project-name">${r.name}</a>
