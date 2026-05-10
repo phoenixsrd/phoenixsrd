@@ -4,6 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>phoenixsrd — Portfólio</title>
+
+<!-- SEO -->
+<meta name="description" content="Portfólio de phoenixsrd — desenvolvedor focado em automação, Python, ferramentas web e utilitários open source.">
+<meta name="author" content="phoenixsrd">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="desenvolvedor, automação, Python, JavaScript, TypeScript, Shell, open source, portfólio">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://phoenixsrd.github.io/">
+<meta property="og:title" content="phoenixsrd — Portfólio">
+<meta property="og:description" content="Desenvolvedor focado em automação, Python, ferramentas web e utilitários open source.">
+<meta property="og:image" content="https://github.com/phoenixsrd.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="phoenixsrd — Portfólio">
+<meta name="twitter:description" content="Desenvolvedor focado em automação, Python, ferramentas web e utilitários open source.">
+<meta name="twitter:image" content="https://github.com/phoenixsrd.png">
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+<link rel="apple-touch-icon" href="https://github.com/phoenixsrd.png">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#08080e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="phoenixsrd">
+
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -12,6 +45,7 @@
     --bg:#08080e; --surface:#0f0f1a; --surface2:#161625;
     --border:rgba(255,107,53,.15); --fire:#ff6b35; --amber:#ffaa00;
     --ember:#ff3d1a; --text:#e8e8f2; --muted:#6e6e8a; --card-bg:rgba(22,22,37,.85);
+    --green:#4ade80;
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -19,9 +53,23 @@
   #bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.3}
   .container{max-width:1100px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
 
+  /* ── NAV ── */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:all .35s}
+  nav.scrolled{background:rgba(8,8,14,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:12px 0}
+  .nav-inner{display:flex;justify-content:space-between;align-items:center}
+  .nav-brand{font-family:'Oxanium',sans-serif;font-weight:700;font-size:18px;background:linear-gradient(135deg,var(--amber),var(--fire));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;letter-spacing:-.01em}
+  .nav-links{display:flex;gap:28px;list-style:none}
+  .nav-links a{color:var(--muted);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;transition:color .2s;position:relative}
+  .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--fire);transition:width .2s}
+  .nav-links a:hover{color:var(--fire)}
+  .nav-links a:hover::after{width:100%}
+  @media(max-width:600px){.nav-links{display:none}}
+
+  /* ── HERO ── */
   header{min-height:100vh;display:flex;align-items:center;position:relative}
-  .hero-inner{padding:80px 0 60px}
-  .hero-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--fire);background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.25);padding:4px 14px;border-radius:4px;margin-bottom:28px;letter-spacing:.08em;opacity:0;animation:fadeUp .6s .2s forwards}
+  .hero-inner{padding:100px 0 60px}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--fire);background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.25);padding:5px 16px;border-radius:4px;margin-bottom:28px;letter-spacing:.06em;opacity:0;animation:fadeUp .6s .2s forwards}
+  .available-dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;animation:blink 2s infinite}
   h1{font-family:'Oxanium',sans-serif;font-size:clamp(52px,9vw,96px);font-weight:800;line-height:1;letter-spacing:-.02em;opacity:0;animation:fadeUp .6s .4s forwards}
   .name-fire{background:linear-gradient(135deg,var(--amber),var(--fire),var(--ember));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
   .hero-bio{margin-top:24px;font-size:18px;color:var(--muted);max-width:560px;min-height:28px;opacity:0;animation:fadeUp .6s .6s forwards}
@@ -38,23 +86,54 @@
   .scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;opacity:0;animation:fadeIn 1s 1.5s forwards}
   .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,transparent,var(--fire));animation:scrollPulse 2s infinite}
 
+  /* ── SECTIONS ── */
   section{padding:90px 0;position:relative;z-index:1;border-top:1px solid var(--border)}
   .section-label{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--fire);letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:12px}
   .section-label::before{content:'';display:block;width:32px;height:1px;background:var(--fire)}
   .section-title{font-family:'Oxanium',sans-serif;font-size:clamp(26px,4vw,40px);font-weight:700;line-height:1.15;margin-bottom:44px}
 
+  /* ── SOBRE ── */
+  .sobre-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:start}
+  .sobre-text p{color:var(--muted);font-size:16px;line-height:1.85;margin-bottom:18px}
+  .sobre-text p strong{color:var(--text)}
+  .sobre-highlights{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+  .highlight-badge{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:rgba(255,107,53,.07);border:1px solid rgba(255,107,53,.2);border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--fire);letter-spacing:.04em;transition:all .2s}
+  .highlight-badge:hover{background:rgba(255,107,53,.14);transform:translateY(-2px)}
+  .sobre-sidebar{display:flex;flex-direction:column;gap:14px}
+  .info-card{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:18px 20px;display:flex;align-items:center;gap:14px;transition:all .25s}
+  .info-card:hover{border-color:rgba(255,107,53,.3);transform:translateX(5px)}
+  .info-card-icon{font-size:20px;width:42px;height:42px;border-radius:10px;background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .info-card-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+  .info-card-value{font-size:14px;color:var(--text);font-weight:500;margin-top:3px}
+  @media(max-width:768px){.sobre-grid{grid-template-columns:1fr;gap:36px}}
+
+  /* ── STACK ── */
+  .stack-categories{display:flex;flex-direction:column;gap:36px}
+  .stack-category-block{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 26px}
+  .stack-cat-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--fire);letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+  .stack-cat-label::before{content:'';display:block;width:16px;height:1px;background:var(--fire)}
   .tech-grid{display:flex;flex-wrap:wrap;gap:10px}
   .tech-pill{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:40px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text);transition:all .22s}
   .tech-pill:hover{border-color:var(--fire);color:var(--fire);background:rgba(255,107,53,.06);transform:translateY(-2px)}
   .tech-pill .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-  .interests-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .interests-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
   .interest-tag{padding:5px 14px;border-radius:4px;background:rgba(255,170,0,.07);border:1px solid rgba(255,170,0,.2);color:var(--amber);font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.04em}
 
+  /* ── FILTER ── */
+  .filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+  .filter-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;letter-spacing:.04em}
+  .filter-btn:hover{border-color:var(--fire);color:var(--fire)}
+  .filter-btn.active{background:rgba(255,107,53,.1);border-color:var(--fire);color:var(--fire)}
+  .filter-dot{width:6px;height:6px;border-radius:50%}
+  .filter-count{font-size:10px;opacity:.5;margin-left:2px}
+
+  /* ── PROJECTS ── */
   .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
   .project-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:26px;position:relative;overflow:hidden;transition:all .3s;backdrop-filter:blur(12px);display:flex;flex-direction:column}
   .project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--fire),transparent);opacity:0;transition:opacity .3s}
   .project-card:hover{border-color:rgba(255,107,53,.35);transform:translateY(-4px);box-shadow:0 24px 48px rgba(0,0,0,.4)}
   .project-card:hover::before{opacity:1}
+  .project-card.hidden{display:none}
   .project-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
   .project-icon{font-size:20px;width:44px;height:44px;border-radius:10px;background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
   .project-links{display:flex;gap:6px}
@@ -67,45 +146,99 @@
   .lang-badge{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
   .lang-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
   .meta-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--muted)}
-  .live-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-family:'JetBrains Mono',monospace;color:#4ade80;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);padding:2px 10px;border-radius:20px}
-  .live-dot{width:5px;height:5px;border-radius:50%;background:#4ade80;animation:blink 1.5s infinite}
+  .live-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--green);background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);padding:2px 10px;border-radius:20px}
+  .live-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:blink 1.5s infinite}
+  .no-results{display:none;padding:40px;text-align:center;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:13px;grid-column:1/-1}
 
-  .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+  /* ── STATS ── */
+  .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:36px}
   .stat-card{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:28px 20px;text-align:center;transition:all .25s}
   .stat-card:hover{border-color:rgba(255,107,53,.35);transform:translateY(-3px)}
   .stat-value{font-family:'Oxanium',sans-serif;font-size:38px;font-weight:800;background:linear-gradient(135deg,var(--amber),var(--fire));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
   .stat-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-top:8px;letter-spacing:.08em;text-transform:uppercase}
+  .contributions-wrap{background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:26px}
+  .contributions-title{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+  .contributions-title::before{content:'';display:block;width:16px;height:1px;background:var(--muted)}
+  #contrib-chart{width:100%;border-radius:6px;display:block;filter:brightness(.85) saturate(1.2)}
+  .contrib-error{color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:12px;padding:24px 0;text-align:center}
 
+  /* ── CONTACT ── */
+  .contact-intro{color:var(--muted);font-size:16px;max-width:520px;margin-bottom:36px;margin-top:-20px}
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+  .contact-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:22px 24px;display:flex;align-items:center;gap:16px;text-decoration:none;transition:all .3s;backdrop-filter:blur(12px)}
+  .contact-card:hover{border-color:rgba(255,107,53,.35);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+  .contact-icon{width:46px;height:46px;border-radius:12px;background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--fire)}
+  .contact-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+  .contact-value{font-size:14px;color:var(--text);font-weight:500;margin-top:3px}
+
+  /* ── SKELETON ── */
   .skeleton{background:linear-gradient(90deg,var(--surface2) 25%,rgba(255,107,53,.05) 50%,var(--surface2) 75%);background-size:400% 100%;animation:shimmer 1.5s infinite;border-radius:8px}
   @keyframes shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
 
+  /* ── FOOTER ── */
   footer{border-top:1px solid var(--border);padding:44px 0;position:relative;z-index:1}
   .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
   .footer-brand{font-family:'Oxanium',sans-serif;font-size:22px;font-weight:700;background:linear-gradient(135deg,var(--amber),var(--fire));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
   .footer-credit{font-size:13px;color:var(--muted);font-family:'JetBrains Mono',monospace}
   .footer-credit a{color:var(--fire);text-decoration:none}
+  .footer-back{display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);text-decoration:none;transition:color .2s}
+  .footer-back:hover{color:var(--fire)}
 
-  .error-msg{color:#f87171;font-family:'JetBrains Mono',monospace;font-size:13px;padding:16px;background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.2);border-radius:8px}
+  /* ── ERROR ── */
+  .error-msg{color:#f87171;font-family:'JetBrains Mono',monospace;font-size:13px;padding:20px;background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.2);border-radius:10px;line-height:1.7}
+  .error-msg .error-hint{font-size:11px;color:var(--muted);margin-top:8px;display:block}
+  .error-retry{display:inline-flex;align-items:center;gap:6px;margin-top:12px;color:var(--fire);cursor:pointer;font-size:12px;background:none;border:none;font-family:'JetBrains Mono',monospace;padding:6px 12px;border:1px solid rgba(255,107,53,.3);border-radius:4px;transition:all .2s}
+  .error-retry:hover{background:rgba(255,107,53,.08)}
 
+  /* ── ANIMATIONS ── */
   @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   @keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:1}}
   @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s,transform .55s}
   .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* ── SCROLLBAR ── */
   ::-webkit-scrollbar{width:5px}
   ::-webkit-scrollbar-track{background:var(--bg)}
   ::-webkit-scrollbar-thumb{background:rgba(255,107,53,.3);border-radius:4px}
-  @media(max-width:600px){.projects-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:600px){
+    .projects-grid{grid-template-columns:1fr}
+    .stats-grid{grid-template-columns:repeat(2,1fr)}
+    .contact-grid{grid-template-columns:1fr}
+    .hero-actions{flex-direction:column;align-items:flex-start}
+  }
 </style>
 </head>
 <body>
 
 <canvas id="bg-canvas"></canvas>
 
+<!-- ── NAV ── -->
+<nav id="main-nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">phoenixsrd</a>
+      <ul class="nav-links">
+        <li><a href="#sobre">sobre</a></li>
+        <li><a href="#stack">stack</a></li>
+        <li><a href="#projects">projetos</a></li>
+        <li><a href="#stats">stats</a></li>
+        <li><a href="#contato">contato</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
 <header>
   <div class="container">
     <div class="hero-inner">
+      <div class="hero-tag">
+        <span class="available-dot"></span>disponível para projetos
+      </div>
       <h1>
         <span style="color:var(--text)">Olá, eu sou</span>
         <span class="name-fire" id="hero-name">phoenixsrd</span>
@@ -119,7 +252,11 @@
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8l4 4-4 4"/></svg>
           Ver projetos
         </a>
-        <a href="https://github.com/phoenixsrd" target="_blank" class="btn btn-ghost">
+        <a href="#contato" class="btn btn-ghost">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          Contato
+        </a>
+        <a href="https://github.com/phoenixsrd" target="_blank" id="hero-github-link" class="btn btn-ghost">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
           GitHub
         </a>
@@ -129,38 +266,46 @@
   <div class="scroll-hint"><span>scroll</span><div class="scroll-line"></div></div>
 </header>
 
+<!-- ── SOBRE ── -->
+<section id="sobre">
+  <div class="container">
+    <div class="section-label reveal">sobre</div>
+    <h2 class="section-title reveal">Sobre Mim</h2>
+    <div class="sobre-grid">
+      <div class="sobre-text reveal" id="sobre-text"></div>
+      <div class="sobre-sidebar reveal" id="sobre-sidebar"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STACK ── -->
 <section id="stack">
   <div class="container">
     <div class="section-label reveal">tecnologias</div>
     <h2 class="section-title reveal">Ferramentas & Stack</h2>
-    <div class="tech-grid">
-      <div class="tech-pill"><span class="dot" style="background:#e34f26"></span>HTML5</div>
-      <div class="tech-pill"><span class="dot" style="background:#f7df1e"></span>JavaScript</div>
-      <div class="tech-pill"><span class="dot" style="background:#3776ab"></span>Python</div>
-      <div class="tech-pill"><span class="dot" style="background:#4eaa25"></span>Shell Script</div>
-      <div class="tech-pill"><span class="dot" style="background:#3178c6"></span>TypeScript</div>
-      <div class="tech-pill"><span class="dot" style="background:#5391fe"></span>PowerShell</div>
-      <div class="tech-pill"><span class="dot" style="background:#00c7b7"></span>Netlify</div>
-      <div class="tech-pill"><span class="dot" style="background:#aaa"></span>Vercel</div>
-      <div class="tech-pill"><span class="dot" style="background:#336791"></span>PostgreSQL / Neon</div>
-      <div class="tech-pill"><span class="dot" style="background:#ff6b35"></span>yt-dlp</div>
-      <div class="tech-pill"><span class="dot" style="background:#9146ff"></span>Twitch API</div>
-      <div class="tech-pill"><span class="dot" style="background:#ffaa00"></span>Termux</div>
-    </div>
+    <div class="stack-categories" id="stack-categories"></div>
     <div class="interests-row reveal">
       <span class="interest-tag"># automação</span>
       <span class="interest-tag"># downloaders</span>
       <span class="interest-tag"># streaming</span>
       <span class="interest-tag"># agregadores</span>
       <span class="interest-tag"># utilitários</span>
+      <span class="interest-tag"># segurança</span>
     </div>
   </div>
 </section>
 
+<!-- ── PROJECTS ── -->
 <section id="projects">
   <div class="container">
     <div class="section-label reveal">repositórios</div>
-    <h2 class="section-title reveal">Projetos <span id="repo-count" style="font-size:16px;color:var(--muted);font-family:'JetBrains Mono',monospace;font-weight:400;"></span></h2>
+    <h2 class="section-title reveal">
+      Projetos
+      <span id="repo-count" style="font-size:16px;color:var(--muted);font-family:'JetBrains Mono',monospace;font-weight:400;"></span>
+    </h2>
+    <div class="filter-bar reveal" id="filter-bar">
+      <button class="filter-btn active" data-lang="all">todos</button>
+    </div>
     <div id="projects-grid" class="projects-grid">
       <div class="project-card skeleton" style="height:200px;"></div>
       <div class="project-card skeleton" style="height:200px;"></div>
@@ -172,6 +317,7 @@
   </div>
 </section>
 
+<!-- ── STATS ── -->
 <section id="stats">
   <div class="container">
     <div class="section-label reveal">métricas</div>
@@ -183,42 +329,136 @@
       <div class="stat-card skeleton" style="height:100px;"></div>
       <div class="stat-card skeleton" style="height:100px;"></div>
     </div>
+    <div class="contributions-wrap reveal">
+      <div class="contributions-title">contribuições — último ano</div>
+      <img id="contrib-chart" src="" alt="Gráfico de contribuições GitHub" loading="lazy">
+    </div>
   </div>
 </section>
 
+<!-- ── CONTATO ── -->
+<section id="contato">
+  <div class="container">
+    <div class="section-label reveal">contato</div>
+    <h2 class="section-title reveal">Vamos Conversar?</h2>
+    <p class="contact-intro reveal">
+      Aberto a colaborações, projetos open source e conversas sobre automação e ferramentas. Me chama.
+    </p>
+    <div class="contact-grid reveal" id="contact-grid"></div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
 <footer>
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand" id="footer-name">phoenixsrd</div>
+      <a href="#" class="footer-back">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18,15 12,9 6,15"/></svg>
+        voltar ao topo
+      </a>
       <div class="footer-credit">
         Feito com ❤️ &nbsp;·&nbsp;
-        <a href="https://github.com/phoenixsrd" target="_blank">@phoenixsrd</a>
+        <a href="https://github.com/phoenixsrd" target="_blank" id="footer-github-link">@phoenixsrd</a>
       </div>
     </div>
   </div>
 </footer>
 
 <script>
-const GITHUB_USER = 'phoenixsrd';
+// ═══════════════════════════════════════════════════════════════
+//  CONFIG — edite aqui para personalizar o portfólio
+// ═══════════════════════════════════════════════════════════════
+const CONFIG = {
+  user: 'phoenixsrd',
 
-const EXCLUDE = new Set([GITHUB_USER]);
+  about: {
+    paragraphs: [
+      'Desenvolvedor com foco em <strong>automação</strong>, utilitários de linha de comando e ferramentas web práticas. Gosto de transformar processos manuais em scripts que simplesmente funcionam.',
+      'Construo desde scrapers e downloaders até monitores de streaming e agregadores de notícias. Valorizo código <strong>limpo, direto e seguro</strong> — sem scaffolding ou pseudocódigo.',
+    ],
+    highlights: ['🔥 Automação', '🐍 Python & Shell', '🌐 Ferramentas Web', '🔒 Segurança', '📦 Open Source'],
+    sidebar: [
+      { icon: '⚡', label: 'foco atual',       value: 'Automação & Open Source'   },
+      { icon: '📱', label: 'plataformas',       value: 'Linux, Android (Termux)'   },
+      { icon: '🛠️', label: 'sempre construindo', value: 'scripts, tools & utilities' },
+    ],
+  },
+
+  stack: {
+    'Linguagens': [
+      { name: 'HTML5',       color: '#e34f26' },
+      { name: 'JavaScript',  color: '#f7df1e' },
+      { name: 'Python',      color: '#3776ab' },
+      { name: 'Shell Script',color: '#4eaa25' },
+      { name: 'TypeScript',  color: '#3178c6' },
+      { name: 'PowerShell',  color: '#5391fe' },
+    ],
+    'Ferramentas & Libs': [
+      { name: 'PostgreSQL / Neon', color: '#336791' },
+      { name: 'Prisma ORM',        color: '#5a67d8' },
+      { name: 'Express.js',        color: '#888888' },
+      { name: 'JWT / Auth',        color: '#fb9a05' },
+      { name: 'yt-dlp',            color: '#ff6b35' },
+      { name: 'Twitch API',        color: '#9146ff' },
+      { name: 'Termux',            color: '#ffaa00' },
+    ],
+    'Plataformas & Deploy': [
+      { name: 'Netlify', color: '#00c7b7' },
+      { name: 'Vercel',  color: '#e8e8f2' },
+      { name: 'GitHub',  color: '#f0f6fc' },
+      { name: 'Neon DB', color: '#00e699' },
+    ],
+  },
+
+  // Contatos — preencha os que quiser usar
+  contact: {
+    email:    '',  // ex: 'seu@email.com'
+    linkedin: '',  // ex: 'linkedin.com/in/seuusuario'
+    discord:  '',  // ex: 'seuusuario#0000'
+    twitter:  '',  // ex: '@seuusuario'
+  },
+};
+
+// ═══════════════════════════════════════════════════════════════
+//  DESCRIPTIONS — descrições customizadas para repos específicos
+//  (sobrepõem a descrição do GitHub quando definidas)
+// ═══════════════════════════════════════════════════════════════
+const DESCRIPTIONS = {
+  // 'nome-do-repo': 'Descrição customizada aqui.',
+};
+
+// ───────────────────────────────────────────────────────────────
+
+const GH_USER = CONFIG.user;
+const EXCLUDE  = new Set([GH_USER]);
 
 const ICON_MAP = [
-  ['photo','🖼️'],['cinema','🎬'],['stream','🎬'],['yt','⬇️'],
-  ['pulso','📰'],['news','📰'],['twitch','🟣'],['monitor','👁️'],
-  ['random','🎲'],['script','⚙️'],['dow','📦'],['link','🔗'],
-  ['multi','📺'],['nmap','🔍'],['import','📥']
+  ['pulso','📰'],['news','📰'],['rss','📡'],
+  ['twitch','🟣'],['stream','🎬'],['cinema','🎬'],['multi','📺'],
+  ['yt','⬇️'],['dow','📦'],['import','📥'],
+  ['monitor','👁️'],['watch','👁️'],
+  ['nmap','🔍'],['scan','🔍'],
+  ['photo','🖼️'],['image','🖼️'],
+  ['forum','💬'],['chat','💬'],
+  ['auth','🔐'],['secure','🔐'],['crypt','🔐'],
+  ['api','🔌'],
+  ['bot','🤖'],['auto','⚙️'],
+  ['link','🔗'],['url','🔗'],
+  ['random','🎲'],['script','⚙️'],['tool','🛠️'],['util','🛠️'],['web','🌐'],
 ];
 
 const LANG_COLOR = {
-  JavaScript:'#f7df1e',TypeScript:'#3178c6',Python:'#3776ab',
-  HTML:'#e34f26',Shell:'#4eaa25',PowerShell:'#5391fe',
-  CSS:'#563d7c',PHP:'#8892be',Ruby:'#cc342d',Go:'#00add8',
-  Rust:'#dea584',Java:'#b07219','C#':'#178600','C++':'#f34b7d'
+  JavaScript:'#f7df1e', TypeScript:'#3178c6', Python:'#3776ab',
+  HTML:'#e34f26', Shell:'#4eaa25', PowerShell:'#5391fe',
+  CSS:'#563d7c', PHP:'#8892be', Ruby:'#cc342d', Go:'#00add8',
+  Rust:'#dea584', Java:'#b07219', 'C#':'#178600', 'C++':'#f34b7d',
+  Makefile:'#427819', Dockerfile:'#384d54',
 };
 
+// ── Particle background ──────────────────────────────────────
 (()=>{
-  const c=document.getElementById('bg-canvas'),ctx=c.getContext('2d');
+  const c=document.getElementById('bg-canvas'), ctx=c.getContext('2d');
   let W,H,pts=[];
   const resize=()=>{W=c.width=innerWidth;H=c.height=innerHeight};
   resize(); addEventListener('resize',resize);
@@ -227,10 +467,10 @@ const LANG_COLOR = {
   (function loop(){
     ctx.clearRect(0,0,W,H);
     pts.forEach(p=>{
-      p.x+=p.vx;p.y+=p.vy;p.life++;
-      if(p.life>=p.max)Object.assign(p,mk());
-      const t=p.life/p.max,a=Math.sin(t*Math.PI)*.5;
-      ctx.beginPath();ctx.arc(p.x,p.y,p.sz,0,Math.PI*2);
+      p.x+=p.vx; p.y+=p.vy; p.life++;
+      if(p.life>=p.max) Object.assign(p,mk());
+      const t=p.life/p.max, a=Math.sin(t*Math.PI)*.5;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.sz,0,Math.PI*2);
       ctx.fillStyle=`rgba(255,${Math.round(107+80*t)},${Math.round(53*(1-t))},${a})`;
       ctx.fill();
     });
@@ -238,83 +478,149 @@ const LANG_COLOR = {
   })();
 })();
 
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.1});
-document.querySelectorAll('.reveal,.tech-pill').forEach(el=>obs.observe(el));
+// ── Intersection observer (reveal) ───────────────────────────
+const obs = new IntersectionObserver(
+  es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),
+  {threshold:.1}
+);
+const observe = ()=>document.querySelectorAll('.reveal,.tech-pill,.interest-tag,.highlight-badge').forEach(el=>obs.observe(el));
 
-const getIcon=name=>{
-  const n=name.toLowerCase();
-  for(const[k,v]of ICON_MAP)if(n.includes(k))return v;
-  return '📁';
-};
+// ── Nav scroll effect ─────────────────────────────────────────
+addEventListener('scroll',()=>
+  document.getElementById('main-nav').classList.toggle('scrolled', scrollY>50)
+);
 
-const GH_SVG=`<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>`;
+// ── SVG icons ─────────────────────────────────────────────────
+const GH_SVG=`<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>`;
 const LK_SVG=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
 const ST_SVG=`<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
 const FK_SVG=`<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="12" cy="6" r="3"/><path d="M6 15v-1c0-1.7 1.3-3 3-3h6c1.7 0 3-1.3 3-3V9"/><line x1="6" y1="15" x2="6" y2="9"/></svg>`;
+const ML_SVG=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>`;
+const LI_SVG=`<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>`;
+const DC_SVG=`<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.03.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>`;
+const TW_SVG=`<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
 
+// ── GitHub API helper ─────────────────────────────────────────
 async function ghFetch(path){
-  const r=await fetch(`https://api.github.com/${path}`);
-  if(!r.ok)throw new Error(`${r.status} ${r.statusText}`);
+  const r = await fetch(`https://api.github.com/${path}`);
+  if(!r.ok){
+    const isRateLimit = r.status===403||r.status===429;
+    if(isRateLimit){
+      const reset = r.headers.get('X-RateLimit-Reset');
+      const t = reset ? new Date(reset*1000).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}) : 'em breve';
+      throw Object.assign(new Error(`Rate limit da GitHub API atingido. Tente às ${t}.`),{isRateLimit:true});
+    }
+    throw new Error(`Erro ${r.status}: ${r.statusText}`);
+  }
   return r.json();
 }
 
-async function loadProfile(){
-  try{
-    const u=await ghFetch(`users/${GITHUB_USER}`);
-    document.getElementById('hero-name').textContent=u.login;
-    document.getElementById('footer-name').textContent=u.login;
-    const bio=document.getElementById('hero-bio');
-    bio.innerHTML=u.bio||'<strong>Desenvolvedor</strong> focado em automação, Python, web tools, streaming e utilitários.';
-    document.getElementById('hero-meta').innerHTML=`
-      <div class="meta-item">${GH_SVG} <strong>${u.public_repos}</strong> repos públicos</div>
-      <div class="meta-item">${ST_SVG} <strong>${u.followers}</strong> seguidores</div>
-      ${u.location?`<div class="meta-item">📍 ${u.location}</div>`:''}
-    `;
-    document.querySelector('a[href="https://github.com/phoenixsrd"]').href=u.html_url;
-  }catch(e){console.warn('Profile error:',e)}
+function getIcon(name){
+  const n = name.toLowerCase();
+  for(const[k,v] of ICON_MAP) if(n.includes(k)) return v;
+  return '📁';
 }
 
-async function loadRepos(){
-  try{
-    let page=1,all=[];
-    while(true){
-      const batch=await ghFetch(`users/${GITHUB_USER}/repos?per_page=100&page=${page}&sort=updated`);
-      all=all.concat(batch);
-      if(batch.length<100)break;
-      page++;
-    }
+// ── SOBRE ────────────────────────────────────────────────────
+function renderSobre(profile){
+  const text    = document.getElementById('sobre-text');
+  const sidebar = document.getElementById('sobre-sidebar');
 
-    const repos=all
-      .filter(r=>!EXCLUDE.has(r.name)&&!r.fork)
-      .sort((a,b)=>{
-        const ah=a.homepage?1:0,bh=b.homepage?1:0;
-        if(ah!==bh)return bh-ah;
-        if(b.stargazers_count!==a.stargazers_count)return b.stargazers_count-a.stargazers_count;
-        return new Date(b.updated_at)-new Date(a.updated_at);
-      });
+  text.innerHTML =
+    CONFIG.about.paragraphs.map(p=>`<p>${p}</p>`).join('') +
+    `<div class="sobre-highlights">
+      ${CONFIG.about.highlights.map(h=>`<span class="highlight-badge">${h}</span>`).join('')}
+    </div>`;
 
-    document.getElementById('repo-count').textContent=`(${repos.length})`;
-    renderCards(repos);
-    renderStats(all);
-  }catch(e){
-    document.getElementById('projects-grid').innerHTML=
-      `<div class="error-msg">Erro ao carregar repositórios via GitHub API: ${e.message}</div>`;
-    document.getElementById('stats-grid').innerHTML='';
-  }
+  const locationItem = profile?.location
+    ? `<div class="info-card"><div class="info-card-icon">📍</div><div><div class="info-card-label">localização</div><div class="info-card-value">${profile.location}</div></div></div>`
+    : '';
+
+  sidebar.innerHTML = locationItem + CONFIG.about.sidebar.map(item=>`
+    <div class="info-card">
+      <div class="info-card-icon">${item.icon}</div>
+      <div>
+        <div class="info-card-label">${item.label}</div>
+        <div class="info-card-value">${item.value}</div>
+      </div>
+    </div>
+  `).join('');
+
+  observe();
 }
 
+// ── STACK ────────────────────────────────────────────────────
+function renderStack(){
+  const wrap = document.getElementById('stack-categories');
+  wrap.innerHTML = Object.entries(CONFIG.stack).map(([label,pills])=>`
+    <div class="stack-category-block reveal">
+      <div class="stack-cat-label">${label}</div>
+      <div class="tech-grid">
+        ${pills.map(p=>`<div class="tech-pill"><span class="dot" style="background:${p.color}"></span>${p.name}</div>`).join('')}
+      </div>
+    </div>
+  `).join('');
+  observe();
+}
+
+// ── FILTER BAR ───────────────────────────────────────────────
+function buildFilterBar(repos){
+  const bar = document.getElementById('filter-bar');
+  const langCount = {};
+  repos.forEach(r=>{ if(r.language) langCount[r.language]=(langCount[r.language]||0)+1 });
+
+  Object.entries(langCount)
+    .sort((a,b)=>b[1]-a[1])
+    .forEach(([lang,count])=>{
+      const btn = document.createElement('button');
+      btn.className = 'filter-btn';
+      btn.dataset.lang = lang;
+      const color = LANG_COLOR[lang]||'#888';
+      btn.innerHTML = `<span class="filter-dot" style="background:${color}"></span>${lang}<span class="filter-count">${count}</span>`;
+      bar.appendChild(btn);
+    });
+
+  bar.addEventListener('click', e=>{
+    const btn = e.target.closest('.filter-btn');
+    if(!btn) return;
+    bar.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    filterCards(btn.dataset.lang);
+  });
+}
+
+function filterCards(lang){
+  const grid = document.getElementById('projects-grid');
+  let visible = 0;
+  grid.querySelectorAll('.project-card[data-lang]').forEach(card=>{
+    const show = lang==='all' || card.dataset.lang===lang;
+    card.classList.toggle('hidden',!show);
+    if(show) visible++;
+  });
+  let noRes = grid.querySelector('.no-results');
+  if(!visible){
+    if(!noRes){ noRes=document.createElement('div'); noRes.className='no-results'; grid.appendChild(noRes); }
+    noRes.style.display='block';
+    noRes.textContent = `Nenhum projeto em ${lang} encontrado.`;
+  } else if(noRes) noRes.style.display='none';
+}
+
+// ── CARDS ────────────────────────────────────────────────────
 function renderCards(repos){
-  const grid=document.getElementById('projects-grid');
-  if(!repos.length){grid.innerHTML='<p style="color:var(--muted);font-family:JetBrains Mono,monospace;">Nenhum repositório encontrado.</p>';return}
+  const grid = document.getElementById('projects-grid');
+  if(!repos.length){
+    grid.innerHTML='<p style="color:var(--muted);font-family:JetBrains Mono,monospace;">Nenhum repositório encontrado.</p>';
+    return;
+  }
   grid.innerHTML='';
-
-  repos.forEach((r,i)=>{
-    const live=r.homepage&&r.homepage.trim()!=='';
-    const lc=LANG_COLOR[r.language]||'#888';
-    const card=document.createElement('div');
-    card.className='project-card reveal';
-
-    card.innerHTML=`
+  repos.forEach(r=>{
+    const live = r.homepage&&r.homepage.trim()!=='';
+    const lc   = LANG_COLOR[r.language]||'#888';
+    const desc = DESCRIPTIONS[r.name] || r.description || 'Sem descrição — acesse o repositório para mais detalhes.';
+    const card = document.createElement('div');
+    card.className = 'project-card reveal';
+    card.dataset.lang = r.language||'';
+    card.innerHTML = `
       <div class="project-header">
         <div class="project-icon">${getIcon(r.name)}</div>
         <div class="project-links">
@@ -323,7 +629,7 @@ function renderCards(repos){
         </div>
       </div>
       <a href="${r.html_url}" target="_blank" rel="noopener" class="project-name">${r.name}</a>
-      <p class="project-desc">${r.description||'A descrição de cada projeto encontra-se no repositório. Clique no ícone do GitHub para visualizá-lo.'}</p>
+      <p class="project-desc">${desc}</p>
       <div class="project-footer">
         <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
           ${r.language?`<span class="lang-badge"><span class="lang-dot" style="background:${lc}"></span>${r.language}</span>`:''}
@@ -331,31 +637,28 @@ function renderCards(repos){
           <span class="meta-badge">${FK_SVG} ${r.forks_count}</span>
         </div>
         ${live?`<span class="live-badge"><span class="live-dot"></span>live</span>`:''}
-      </div>
-    `;
-
+      </div>`;
     grid.appendChild(card);
     obs.observe(card);
   });
 }
 
+// ── STATS ────────────────────────────────────────────────────
 function renderStats(all){
-  const own=all.filter(r=>!r.fork);
-  const stars=own.reduce((s,r)=>s+r.stargazers_count,0);
-  const forks=own.reduce((s,r)=>s+r.forks_count,0);
-  const deploys=own.filter(r=>r.homepage&&r.homepage.trim()).length;
-  const langs=new Set(own.map(r=>r.language).filter(Boolean)).size;
+  const own    = all.filter(r=>!r.fork);
+  const stars  = own.reduce((s,r)=>s+r.stargazers_count,0);
+  const forks  = own.reduce((s,r)=>s+r.forks_count,0);
+  const deploys= own.filter(r=>r.homepage&&r.homepage.trim()).length;
+  const langs  = new Set(own.map(r=>r.language).filter(Boolean)).size;
+  const grid   = document.getElementById('stats-grid');
 
-  const grid=document.getElementById('stats-grid');
-  const items=[
+  grid.innerHTML=[
     [own.length,'Repositórios'],
-    [stars,'Stars totais'],
-    [deploys,'Com deploy'],
-    [langs,'Linguagens'],
-    [forks,'Forks totais']
-  ];
-
-  grid.innerHTML=items.map(([v,l])=>`
+    [stars,     'Stars totais'],
+    [deploys,   'Com deploy'],
+    [langs,     'Linguagens'],
+    [forks,     'Forks totais'],
+  ].map(([v,l])=>`
     <div class="stat-card reveal">
       <div class="stat-value">${v}</div>
       <div class="stat-label">${l}</div>
@@ -365,6 +668,108 @@ function renderStats(all){
   grid.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 }
 
+// ── CONTACT ──────────────────────────────────────────────────
+function renderContact(){
+  const grid  = document.getElementById('contact-grid');
+  const links = [];
+
+  links.push({href:`https://github.com/${GH_USER}`, icon:GH_SVG, label:'GitHub',  value:`@${GH_USER}`,      ext:true});
+  if(CONFIG.contact.email)    links.push({href:`mailto:${CONFIG.contact.email}`,          icon:ML_SVG, label:'E-mail',  value:CONFIG.contact.email});
+  if(CONFIG.contact.linkedin) links.push({href:`https://${CONFIG.contact.linkedin}`,      icon:LI_SVG, label:'LinkedIn',value:CONFIG.contact.linkedin.replace(/^linkedin\.com\/in\//,''), ext:true});
+  if(CONFIG.contact.discord)  links.push({href:'https://discord.com',                     icon:DC_SVG, label:'Discord', value:CONFIG.contact.discord, ext:true});
+  if(CONFIG.contact.twitter)  links.push({href:`https://twitter.com/${CONFIG.contact.twitter.replace('@','')}`, icon:TW_SVG, label:'Twitter/X', value:CONFIG.contact.twitter, ext:true});
+
+  grid.innerHTML = links.map(l=>`
+    <a href="${l.href}" ${l.ext?'target="_blank" rel="noopener"':''} class="contact-card">
+      <div class="contact-icon">${l.icon}</div>
+      <div>
+        <div class="contact-label">${l.label}</div>
+        <div class="contact-value">${l.value}</div>
+      </div>
+    </a>
+  `).join('');
+  observe();
+}
+
+// ── PROFILE + REPOS ──────────────────────────────────────────
+async function loadProfile(){
+  try{
+    const u = await ghFetch(`users/${GH_USER}`);
+    document.getElementById('hero-name').textContent       = u.login;
+    document.getElementById('footer-name').textContent     = u.login;
+    document.getElementById('footer-github-link').href     = u.html_url;
+    document.getElementById('hero-github-link').href       = u.html_url;
+    document.querySelector('meta[property="og:image"]').content = u.avatar_url;
+    document.querySelector('meta[name="twitter:image"]').content = u.avatar_url;
+
+    const bio = document.getElementById('hero-bio');
+    bio.innerHTML = u.bio || '<strong>Desenvolvedor</strong> focado em automação, Python, ferramentas web e utilitários open source.';
+
+    document.getElementById('hero-meta').innerHTML=`
+      <div class="meta-item">${GH_SVG} <strong>${u.public_repos}</strong> repos públicos</div>
+      <div class="meta-item">${ST_SVG} <strong>${u.followers}</strong> seguidores</div>
+      ${u.location?`<div class="meta-item">📍 ${u.location}</div>`:''}
+    `;
+
+    renderSobre(u);
+
+    // Contributions chart
+    const img = document.getElementById('contrib-chart');
+    img.src = `https://ghchart.rshah.org/ff6b35/${GH_USER}`;
+    img.onerror = ()=>{
+      img.insertAdjacentHTML('afterend','<p class="contrib-error">Gráfico indisponível — acesse seu <a href="'+u.html_url+'" target="_blank" style="color:var(--fire)">perfil no GitHub</a> para ver as contribuições.</p>');
+      img.remove();
+    };
+  }catch(e){ console.warn('Profile error:',e) }
+}
+
+async function loadRepos(){
+  try{
+    let page=1, all=[];
+    while(true){
+      const batch = await ghFetch(`users/${GH_USER}/repos?per_page=100&page=${page}&sort=updated`);
+      all = all.concat(batch);
+      if(batch.length<100) break;
+      page++;
+    }
+
+    const repos = all
+      .filter(r=>!EXCLUDE.has(r.name)&&!r.fork)
+      .sort((a,b)=>{
+        const ah=a.homepage?1:0, bh=b.homepage?1:0;
+        if(ah!==bh) return bh-ah;
+        if(b.stargazers_count!==a.stargazers_count) return b.stargazers_count-a.stargazers_count;
+        return new Date(b.updated_at)-new Date(a.updated_at);
+      });
+
+    document.getElementById('repo-count').textContent = `(${repos.length})`;
+    buildFilterBar(repos);
+    renderCards(repos);
+    renderStats(all);
+  }catch(e){
+    const hint = e.isRateLimit
+      ? 'A API pública do GitHub tem limite de 60 req/h por IP.'
+      : 'Verifique sua conexão e tente novamente.';
+    document.getElementById('projects-grid').innerHTML=`
+      <div class="error-msg" style="grid-column:1/-1">
+        ⚠️ ${e.message}
+        <span class="error-hint">${hint}</span>
+        <button class="error-retry" onclick="location.reload()">↻ Tentar novamente</button>
+      </div>`;
+    document.getElementById('stats-grid').innerHTML='';
+  }
+}
+
+// ── PWA ──────────────────────────────────────────────────────
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+
+// ── INIT ─────────────────────────────────────────────────────
+renderSobre(null);
+renderStack();
+renderContact();
+observe();
 loadProfile();
 loadRepos();
 </script>
