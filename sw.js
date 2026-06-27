@@ -23,21 +23,22 @@ self.addEventListener('activate', event => {
 
 // ── Fetch: cache-first for same-origin, network-only for APIs ─
 self.addEventListener('fetch', event => {
-  const url = event.request.url;
+  const requestUrl = new URL(event.request.url);
 
   // Skip non-GET requests
   if (event.request.method !== 'GET') return;
 
   // Network-only for external APIs and CDNs (always fresh)
-  if (
-    url.includes('api.github.com') ||
-    url.includes('ghchart.rshah.org') ||
-    url.includes('fonts.googleapis.com') ||
-    url.includes('fonts.gstatic.com')
-  ) return;
+  const externalNetworkOnlyHosts = [
+    'api.github.com',
+    'ghchart.rshah.org',
+    'fonts.googleapis.com',
+    'fonts.gstatic.com'
+  ];
+  if (externalNetworkOnlyHosts.includes(requestUrl.hostname)) return;
 
   // Cache-first for same-origin assets
-  if (url.startsWith(self.location.origin)) {
+  if (requestUrl.origin === self.location.origin) {
     event.respondWith(
       caches.match(event.request).then(cached => {
         if (cached) return cached;
